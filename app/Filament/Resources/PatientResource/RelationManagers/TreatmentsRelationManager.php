@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class TreatmentsRelationManager extends RelationManager
 {
     protected static string $relationship = 'treatments';
+    protected static ?string $pluralLabel = 'دامنه ها';
+    protected static ?string $label = 'دامنه ها';
 
     public function form(Form $form): Form
     {
@@ -32,7 +34,8 @@ class TreatmentsRelationManager extends RelationManager
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('description')->label("شرح ویزیت"),
+                Tables\Columns\TextColumn::make('description')
+                    ->label("شرح ویزیت"),
                 Tables\Columns\TextColumn::make('price')
                     ->label("هزینه")
                     ->money('EUR')

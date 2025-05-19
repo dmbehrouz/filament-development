@@ -25,7 +25,11 @@ class PatientResource extends Resource
     protected static ?string $pluralLabel = 'اطلاعات بیماران';
     protected static ?string $label = 'اطلاعات بیماران';
 
-
+    // Show/Hidden menu on sidebar
+    public static function shouldRegisterNavigation(): bool
+    {
+        return true;
+    }
 
     public static function form(Form $form): Form
     {
@@ -117,9 +121,4 @@ class PatientResource extends Resource
         ];
     }
 
-    // name of side menu and title --> this method high priority than $label property
-//    public static function getPluralLabel(): string
-//    {
-//        return 'مدیریت بیماران';
-//    }
 }

@@ -17,9 +17,18 @@ class TreatmentResource extends Resource
 {
     protected static ?string $model = Treatment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $pluralLabel = 'اطلاعات درمان بیماران';
-    protected static ?string $label = 'اطلاعات درمان بیماران';
+//    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+//    protected static ?string $activeNavigationIcon = 'heroicon-s-rectangle-stack';
+    protected static ?string $navigationGroup = 'مشتری';
+    protected static ?string $navigationBadgeTooltip = 'اطلاعات دامنه ها';
+    protected static ?string $pluralLabel = 'دامنه ها';
+    protected static ?string $label = 'دامنه ها';
+
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
 
     public static function form(Form $form): Form
     {
