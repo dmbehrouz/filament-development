@@ -28,7 +28,7 @@ class PatientResource extends Resource
     // Show/Hidden menu on sidebar
     public static function shouldRegisterNavigation(): bool
     {
-        return true;
+        return false;
     }
 
     public static function form(Form $form): Form

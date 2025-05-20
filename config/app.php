@@ -123,4 +123,43 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'default_domain_config' => [
+        'appName' => 'سامانه ',
+        'defaultTitle' => 'عنوان ',
+        'perFixTitle' => 'تیتر ',
+        'description' => 'توضیحات ',
+        "dir"=> "rtl",
+        "localDateTime"=> true,
+        "dateFormat"=> "jYYYY-jMM-jDD",
+        "dateTimeFormat"=> "jYYYY-jMM-jDD HH:mm:ss",
+        'homeUrl' => '/login',
+        'dashboard' => '/personal-dashboard',
+        'registration' => true,
+        'resetPassword' => true,
+        'defaultTheme' => "material", //This config must be permanent "material" and check with front.
+        'materialThemePermissions' => [
+            'smart-secretary' => false,
+            'cartable' => false,
+            'settings' => false,
+            'request' => false,
+            'notifications' => true,
+            'help' => false,
+        ],
+        'materialThemeSideMenu' => []
+    ],
+    'permanent_status_menu' => [
+        [
+            'key' 	=> 'monitoring',
+            'title' => 'رصد تلسکوپی',
+            'icon' 	=> 'subject',
+            'route'	=> '/monitoring'
+        ],
+        [
+            'key' 	=> 'compare',
+            'title' => 'تحلیل مقایسه ای',
+            'icon' 	=> 'subject',
+            'route'	=> '/subject/compare'
+        ]
+    ],
+
 ];

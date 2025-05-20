@@ -71,13 +71,12 @@ class CustomerResource extends Resource
                         ->label('موبایل')
                         ->tel()
                         ->nullable(),
-                    Forms\Components\Select::make('domain_ids')
-                        ->label('دامنه')
-                        ->options(function () {
-                            return Domain::pluck('name', 'id');
-                        })
-                        ->searchable()
-                        ->nullable(),
+                    Forms\Components\Select::make('domains')
+                        ->label('دامنه‌ها')
+                        ->relationship('domains', 'name')
+                        ->multiple()
+                        ->preload()
+                        ->searchable(),
                 ]),
             Grid::make(1)
                 ->schema([
@@ -86,7 +85,7 @@ class CustomerResource extends Resource
                         ->nullable()
                         ->maxLength(255),
                 ]),
-            Forms\Components\FileUpload ::make('domains')
+            Forms\Components\FileUpload ::make('image')
                 ->label('تصویر')
                 ->nullable(),
 //                Forms\Components\DatePicker::make('date_of_birth')
@@ -125,20 +124,17 @@ class CustomerResource extends Resource
     {
         return $table
             ->columns([
-                //
-            ])
-            ->filters([
-                Tables\Filters\TrashedFilter::make(),
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                    Tables\Actions\ForceDeleteBulkAction::make(),
-                    Tables\Actions\RestoreBulkAction::make(),
-                ]),
+                Tables\Columns\TextColumn::make('id')
+                    ->label('شناسه')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('title')
+                    ->label('نامک (‌انگلیسی)')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('display_name')
+                    ->label('نام نمایشی'),
+
+            ])->filters([
+
             ]);
     }
 

@@ -24,6 +24,11 @@ class TreatmentResource extends Resource
     protected static ?string $pluralLabel = 'دامنه ها';
     protected static ?string $label = 'دامنه ها';
 
+    // Show/Hidden menu on sidebar
+    public static function shouldRegisterNavigation(): bool
+    {
+        return false;
+    }
 
     public static function getNavigationBadge(): ?string
     {
